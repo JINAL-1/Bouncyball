@@ -1,122 +1,135 @@
 body {
-    margin-top: 20%;
-    padding: 5%;
-    display: flex;              /* Use Flexbox                    */
-    justify-content: center;    /* Center Horizontally            */
+  margin-top: 20%;
+  padding: 5%;
+  display: flex; /* Use Flexbox                    */
+  justify-content: center; /* Center Horizontally            */
 }
 
-  .ball{
-    width: 200px;
-    height: 200px;
-    border-radius: 50%;        
-     /* Turns a square into a circle   */
-    background-color: purple;
-    animation: horizontal 2.5s 0.35s linear infinite alternate,
-                vertical 1s 0.56s ease-in infinite alternate;
-		}	
-
-		
-      /* ball color set to purple */
-    /*animation-name: vertical, horizontal;
-    animation-duration: 1s, 2.5s;
-    animation-delay: 0.6s,0.3s;
-    animation-timing-function: ease-in , linear;
-    animation-iteration-count: infinite;
-    animation-direction:alternate;*/
- 
-
-  .vertical{
-    animation-name: vertical;
-    animation-duration: 1s;
-    animation-delay: 0.6s;
-    animation-timing-function: ease-in;
-    animation-iteration-count: infinite;
-    animation-direction:alternate; 
-  }
-
-.horizontal{
-    animation-name: horizontal;
-    animation-duration: 2.5s;
-    animation-delay: 0.3s;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-    animation-direction:alternate; 
+.ball {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  /* Turns a square into a circle   */
+  background-color: purple; /*default color*/
+  animation-name: horizontal;
+  animation-duration: 2.5s;
+  animation-delay: 0.3s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  /*animation: horizontal 2.5s 0.35s linear infinite alternate,
+       vertical 1s 0.56s ease-in infinite alternate;*/
+  /*NOTE : MERGE BOTH KEYFRAMES INTO 1 TO PERFORM BETTER*/
 }
-  /* Shine */
+
+
+/* Adding Shine */
 .ball:after {
-    content:'';
-    top:0;
-    transform:translateX(100%);
-    width:100%;
-    height:220px;
-    position: absolute;
-    z-index:1;
-    animation: slide 1s infinite;
-    /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#ffffff+0,ffffff+100&1+0,0+100;White+to+Transparent */
-  background: -moz-linear-gradient(top,  rgba(255,255,255,1) 0%, rgba(255,255,255,0) 100%); /* FF3.6-15 */
-  background: -webkit-linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(255,255,255,0) 100%); /* Chrome10-25,Safari5.1-6 */
-  background: linear-gradient(to bottom,  rgba(255,255,255,1) 0%,rgba(255,255,255,0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  content: "";
+  top: 0;
+  transform: translateX(100%);
+  width: 100%;
+  height: 220px;
+  position: absolute;
+  z-index: 1;
+  animation: slide 1s infinite;
+  /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#ffffff+0,ffffff+100&1+0,0+100;White+to+Transparent */
+  background: -moz-linear-gradient(
+    top,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(255, 255, 255, 0) 100%
+  ); /* FF3.6-15 */
+  background: -webkit-linear-gradient(
+    top,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(255, 255, 255, 0) 100%
+  ); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(255, 255, 255, 0) 100%
+  ); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#00ffffff',GradientType=0 ); /* IE6-9 */
-      
 }
 
-@keyframes slide{
-    0% {transform:translateX(-100%);}
-	100% {transform:translateX(100%);}
-}
-
-@keyframes vertical {
-    0% {transform:  translateY(-500px);}
-   69% {transform:  translateY(-200px);}
-  100% {transform:  translateY(100px);}
+/* keyframe slide : animates the shine on the ball*/
+@keyframes slide {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
 }
 
 @keyframes horizontal {
-        0%{ 
-            background-color: rgb(0, 255, 179);  
-            transform: translateX(0px);
-        }
-        25%{
-            background-color: rgb(0, 255, 242);
-        transform: translateX(250px);
-        }
-        50%{
-            background-color: rgb(0, 183, 255);
-            transform: translateX(500px);
-        }
-        75%{
-            background-color: rgb(0, 140, 255);
-            transform: translateX(250px);
-        }
-        100%{
-            background-color: rgb(0, 60, 255);
-            transform: translateX(0px);}
-    }
+  0% {
+    background-color: rgb(0, 255, 179);
+    transform: translate(0px, -500px);
+  }
+  25% {
+    background-color: rgb(0, 255, 242);
+    transform: translateX(250px);
+  }
+  50% {
+    background-color: rgb(0, 183, 255);
+    transform: translateX(500px);
+  }
+  75% {
+    background-color: rgb(0, 140, 255);
+    transform: translate(250px, -200px);
+  }
+  100% {
+    background-color: rgb(0, 60, 255);
+    transform: translate(0px, 100px);
+  }
+}
 
-.ballshadow{ 
-  background: radial-gradient(50% 50%, #000 0%, #fff 100%);
+.ballshadow {
+  background: radial-gradient(50% 50%, #000 20%, #fff 80%);
   height: 50px;
   width: 200px;
-  animation-direction: alternate;
-  animation-duration: 1s;
-  animation-name: shadow;
+  animation-name: jump; /*shadow;*/
+  animation-duration: 2.5s;
+  animation-delay: 0.3s;
   animation-iteration-count: infinite;
+  animation-direction: alternate;
   bottom: 0;
   position: absolute;
   margin-left: -100px;
 }
 
-/*.bounce{
-    animation-direction: alternate;
-  animation-duration: 1s;
-  animation-name: grow;
-  animation-iteration-count: infinite;
-  bottom: 0;
-  position: absolute;
-  margin-left: -100px;
-}*/
+@keyframes jump {
+  0% {
+    transform: translateX(0px);
+    opacity: 0;
+    /*  animation-name: shadow;
+        animation-duration: 2.5s;
+        animation-delay: 0.3s;
+        animation-iteration-count: infinite;
+        animation-direction: alternate;*/
+  }
+  25% {
+    transform: translateX(250px);
+    opacity: 0.25;
+  }
+  50% {
+    transform: translateX(500px);
+    opacity: 0.5;
+  }
+  75% {
+    transform: translateX(250px);
+    opacity: 0.75;
+  }
+  100% {
+    transform: translateX(0px);
+    opacity: 1;
+  }
+}
 
-@keyframes shadow {
+/*not needed*/
+
+/*@keyframes shadow {
     from {
       bottom: 0;
       margin-left: -100px;
@@ -132,4 +145,10 @@ body {
       width: 15px;
       opacity: 0.4;
     }
-  }
+  }*/
+
+/*@keyframes vertical {
+      0% {transform:  translateY(-500px);}
+    69% {transform:  translateY(-200px);}
+    100% {transform:  translateY(100px);}
+  }*/
